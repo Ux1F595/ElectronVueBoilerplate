@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+</head>
+<body style="background: white;">
+    <h1>This is the Index.html</h1>
+    <p>
+        We are using node <script>document.write(process.versions.node)</script>,
+        Chrome <script>document.write(process.versions.chrome)</script>,
+        and El dectron <script>document.write(process.versions.electron)</script>.
+    </p>
+
+    <div id="app">{{message}} <App/></div>
+</body>
+
+<script>
+    const { ipcRenderer } = require('electron')    
+
+    ipcRenderer.invoke('renderMessageHandler','Hello From the Renderer');
+
+    ipcRenderer.on('mainProcessMessageHandler',(ev,arg1)=>{
+        console.log(`Got a message from the main process: ${arg1}`)
+    });
+
+</script>
+
+</html>

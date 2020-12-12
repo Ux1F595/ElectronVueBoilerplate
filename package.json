@@ -1,0 +1,38 @@
+{
+  "name": "electron-tool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "pack": "electron-webpack && electron-builder --dir",
+    "dist": "electron-webpack && electron-builder",
+    "dist:standalone": "electron-webpack && electron-builder --win portable",
+    "dev": "electron-webpack dev --remote-debugging-port=9222 --userDataDir=true"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^11.0.4",
+    "electron-builder": "^22.9.1",
+    "electron-webpack": "^2.8.2",
+    "electron-webpack-vue": "^2.4.0",
+    "webpack": "^4.44.2"
+  },
+  "dependencies": {
+    "source-map-support": "^0.5.19",
+    "vue": "^2.6.12"
+  },
+  "build": {
+    "productName": "ElectronBoilerplate",
+    "appId": "Ux1F595.ElectronVueBoilerplate",
+    "directories": {
+      "output": "build"
+    }
+  },
+  "electronWebpack": {
+    "renderer": {
+      "template": "src/renderer/index.html"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Electron: Main",
+            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron-webpack",
+            "args": [
+                "dev"
+              ],
+            "runtimeArgs": [
+                "--remote-debugging-port=9222",
+                "--userDataDir=true",
+            ],
+            "env": {
+                "DEBUG": "*",
+                "ELECTRON_DISABLE_SECURITY_WARNINGS": "1",
+                "NODE_ENV": "development",
+              },
+            "autoAttachChildProcesses": true,
+            "internalConsoleOptions": "openOnFirstSessionStart",
+            "console": "integratedTerminal",
+            "sourceMaps": true,
+            "smartStep": true,
+            "showAsyncStacks": true,
+        },
+        { 
+            "name": "Electron: Renderer",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9222,
+            "webRoot": "${workspaceFolder}",
+            "timeout": 30000,
+            "sourceMaps": true,
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Electron: All",
+            "configurations": [
+                "Electron: Main",
+                "Electron: Renderer"
+            ]
+        }
+    ]
+}
